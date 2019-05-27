@@ -1,0 +1,54 @@
+﻿@model Einladung.Models.GuestResponce
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Thanks</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <style>
+        body {
+            background: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+    @{
+        try
+        {
+            WebMail.SmtpServer = "mail.hs-augsburg.de";
+            WebMail.SmtpPort = 25;
+            WebMail.EnableSsl = true;
+            WebMail.UserName = "user";
+            WebMail.Password = "passwd";
+            WebMail.From = "user@hs-augsburg.de";
+
+            WebMail.Send("alexander.scheffer@hs-augsburg.de", "Die Einladung",
+                Model.Name + ((Model.WillAttend ?? false) ? " " : "kommt") + "nicht");
+
+        }
+        catch (Exception)
+        {
+            @:<b>  </b>
+        }
+    }
+    <div class="text-center">
+        <h1>Dankeschön, @Model.Name!</h1>
+        <div class="lead">
+            @if (Model.WillAttend == true)
+            {
+                @:Schön, dass Sie da sein werden!
+            }
+            else
+            {
+                @:Schade, dass Sie nicht da sein werden.
+            }
+        </div>
+    </div>
+</body>
+</html>
