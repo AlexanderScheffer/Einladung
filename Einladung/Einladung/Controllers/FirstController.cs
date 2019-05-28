@@ -9,6 +9,7 @@ namespace PartyInvites.Controllers
 {
     public class HomeController : Controller
     {
+        // Anbindung an "Index.cshtml"
         public ViewResult Index()
         {
             // Die aktuelle Zeitabfrage
@@ -37,8 +38,8 @@ namespace PartyInvites.Controllers
         [HttpPost]
         public ViewResult RsvpForm(GuestResponce guest)
         {
-            // Hier werden die Gastinfos zum 
-            // Veranstalter gesendet
+            // hier wird die "Thanks.cshtml" aufgerufen 
+            // mit dem Gastnamen als Parameter
             return View("Thanks", guest);
         }
     }
