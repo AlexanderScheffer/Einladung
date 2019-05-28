@@ -25,11 +25,11 @@
             WebMail.SmtpPort = 25;
             WebMail.EnableSsl = true;
             WebMail.UserName = "user";
-            WebMail.Password = "passwd";
-            WebMail.From = "user@hs-augsburg.de";
+            WebMail.Password = "******";
+            WebMail.From = "alexander.scheffer1@hs-augsburg.de";
 
-            WebMail.Send("alexander.scheffer@hs-augsburg.de", "Die Einladung",
-                Model.Name + ((Model.WillAttend ?? false) ? " " : "kommt") + "nicht");
+            WebMail.Send("alexander.scheffer1@hs-augsburg.de", "Die Einladung",
+                Model.Name + ((Model.WillAttend ?? true) ? " " : "kommt") + "nicht");
 
         }
         catch (Exception)
